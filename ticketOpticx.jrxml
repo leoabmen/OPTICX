@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ticketOpticx" pageWidth="226" pageHeight="792" columnWidth="186" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="20" isFloatColumnFooter="true" uuid="efc4ef29-c4ab-4236-8ba8-c6d7a99086e1">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="139"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="idVenta" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select v.vent_id,p.id_producto,v.vent_fech,v.vent_hora,p.descripcion,d.deta_vent_cant_prod,p.precio_venta,d.deta_vent_desc_prod,d.deta_vent_impo,v.vent_subt,v.vent_iva,v.vent_desc_dire,v.vent_tota,v.vent_paga,v.vent_camb from detalles_ventas as d inner Join productos as p inner join ventas as v on id_producto=deta_vent_prod_id and vent_id=deta_vent_vent_id where vent_id=$P{idVenta}]]>
+	</queryString>
+	<field name="vent_id" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_producto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vent_fech" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vent_hora" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="deta_vent_cant_prod" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precio_venta" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="deta_vent_desc_prod" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="deta_vent_impo" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vent_subt" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vent_iva" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vent_desc_dire" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vent_tota" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vent_paga" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vent_camb" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="vent_id_SUM" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{vent_id}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="65" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="56" y="-2" width="73" height="15" forecolor="#000000" uuid="684584c5-5171-488f-bca9-d10068cb4af2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Opticx]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="45" y="12" width="92" height="12" forecolor="#000000" uuid="a47542be-53f9-401c-87f2-9762af40b692"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Soluciones Ópticas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="47" width="28" height="15" uuid="6f9e23a0-e1a3-4143-8b72-5c9572a20edc"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Folio:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement style="Detail" x="87" y="47" width="68" height="15" uuid="d72ffba5-86c6-4cc5-8d8e-c3186ce5a8c9"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vent_fech}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="55" y="47" width="37" height="15" uuid="6ecb4e37-7b3c-463d-9dbf-a0eec28156df"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="23" width="183" height="12" uuid="21ce86cb-8a46-4e29-8da6-44e07a6b1008"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Aldama 22, Altotonga, Ver.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="34" width="184" height="12" uuid="76c19c7c-5111-49d9-9ed3-2817d2516b85"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Lerdo 605 B. Teziutlan, Pue.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="41" y="47" width="15" height="15" uuid="2f98f286-f930-45c7-818d-a2814942acde"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vent_id}]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="142" y="47" width="42" height="14" uuid="41a3e9d6-8263-4ed6-a282-2a8756e1e601"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vent_hora}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="53" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="146" y="26" width="54" height="16" uuid="2fc84502-f396-4461-a491-7a7676ebc98a"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{deta_vent_desc_prod}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="146" y="39" width="54" height="13" uuid="fc8c1662-2b46-45c2-a278-78ad7b611425"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{deta_vent_impo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="15" y="1" width="118" height="15" uuid="89c52e3f-7cb5-4480-9241-3fa39c2f0701"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="3" y="1" width="12" height="15" uuid="3849f40b-add1-4aef-a495-b7e4c76e2e8d"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{deta_vent_cant_prod}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="81" y="25" width="55" height="15" uuid="0110a63c-28c3-4175-850a-b29d0af81450"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Descuento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="38" width="43" height="14" uuid="752f2463-6416-4819-9c83-d886f2d876e6"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Importe:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="146" y="2" width="54" height="15" uuid="93b846d7-7c16-46d3-8696-25c633563138"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precio_venta}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="135" y="1" width="16" height="15" uuid="ab95b304-e37c-4fba-9f04-e5e5fc151d11"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="25" width="16" height="15" uuid="adbad954-8299-4033-b3d9-bdf04ced28fa"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="38" width="16" height="15" uuid="51d05b4b-78ff-411f-9dcb-c2b9c1ff9627"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="24" y="26" width="74" height="18" uuid="b8dbf01f-e718-4e89-b0a8-54c1e247bf54"/>
+				<textElement>
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_producto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="26" width="28" height="18" uuid="d1d400a5-ba7e-4a62-8c37-58a4b83948f8"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Cod:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="149" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="147" y="4" width="53" height="15" uuid="e7b7492c-3c7e-4056-8f72-8e32198ebafc"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vent_subt}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="147" y="19" width="53" height="15" uuid="ce6217a0-2d1d-4099-91ff-c2403394efb3"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vent_iva}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="147" y="34" width="53" height="15" uuid="f40073ee-c03c-44b9-942a-f231aecb46a6"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vent_desc_dire}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="147" y="48" width="53" height="15" uuid="c516ce8e-f4b1-4ab7-a4dc-cb9c72a048fa"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vent_tota}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="147" y="63" width="53" height="15" uuid="d082e1e1-d5b6-4ce9-a0b2-eef62e66296b"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vent_paga}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="147" y="78" width="53" height="14" uuid="6ee2ce98-1a1d-4d7e-8fec-9f7282470c7a"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vent_camb}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="95" y="4" width="42" height="15" uuid="1080237e-8789-46b8-9073-1d7983e14e30"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Subtotal:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="19" width="24" height="15" uuid="d0399760-f665-46fb-bbe1-ba6519135b5c"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[IVA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="45" y="33" width="92" height="15" uuid="1f537790-6c9c-439d-b4d1-ef75e2ca5317"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Descuento Directo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="89" y="48" width="48" height="14" uuid="65513bb5-799a-4ae4-a1cb-e46a4011b78f"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[*****Total:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="46" y="63" width="91" height="15" uuid="4ac35f86-ffcc-4ac5-b2f4-0eaeab550435"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Cantidad Recibida:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="97" y="78" width="40" height="15" uuid="3e9316eb-7eca-4556-859f-1d00a77aeaf1"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Cambio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="3" y="98" width="183" height="13" uuid="c27984e9-b926-4b96-bb08-3e793e244bd1"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="6" isBold="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA["GRACIAS POR SU COMPRA"]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="3" y="110" width="183" height="13" uuid="c6428819-70bf-4c0a-afc8-86967c20f0c9"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[GARANTÍA 6 MESES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="3" y="122" width="183" height="13" uuid="d0fd6362-dcae-4942-b18e-a155689fdc3b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[''SIN ESTA NOTA NO HAY GARANTÍA'']]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="2" y="134" width="184" height="13" uuid="416cf0c7-8c98-4c09-b624-3da4cd50239e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[GARANTÍA SUJETA A REVISIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="3" width="15" height="15" uuid="f42b5fe9-77ca-4c97-86bf-5d8a672a9025"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="18" width="15" height="15" uuid="675457de-65e6-4394-a045-c13138e461df"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="33" width="15" height="15" uuid="315b06d8-ddad-402d-95ba-4518ad94123c"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="47" width="15" height="15" uuid="a553d872-c7a8-4dcf-a67d-a1a5cc94678d"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="62" width="15" height="15" uuid="d2e7e2e9-676d-4a54-b4b3-a8a6b8450dd2"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="77" width="15" height="15" uuid="3bb61555-c865-4978-8f1d-97c7e477b62f"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

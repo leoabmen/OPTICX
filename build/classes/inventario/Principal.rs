@@ -1,0 +1,2 @@
+inventario.Tarea
+inventario.Principal
